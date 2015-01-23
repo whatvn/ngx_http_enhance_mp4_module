@@ -14,10 +14,14 @@ The whole data is ``mdat`` atom, which can be buffered, decompressed and play la
 The ``ftyp`` and ``moov`` atom are just few KB, so if these atom are placed in the begining of the file, every player can start progressive download just after download them. 
 Most of video encoder/muxer/demuxer (without doing 2 pass encoding) place moov atom in the last of the file, which cause progressive playback has problem. Browser has to download the whole file in order to start playing that file, it's not progressive playback anymore.
 
-People can fix mp4 source file using various tools, likes:
+- People can fix mp4 source file using various tools, likes:
+    
     1. https://github.com/danielgtaylor/qtfaststart
+    
     2. Using ffmpeg with 2 pass encoding or ``movflags=+faststart``  
+       
     3. Using my modified version took from ffmpeg project: https://github.com/whatvn/qt-faststart 
+    
     3. Using mp4box with -inter option
 
 
