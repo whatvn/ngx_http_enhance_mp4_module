@@ -27,6 +27,9 @@ Using this module, you *dont have to standarlise* using above tool anymore (you 
 
 # Usage:
 
+- install 
+    - ``./configure --add-module=ngx_http_enhance_mp4_module``
+
 - like mp4 module, nginx configuration file will look likes this:
   ``
   location /mp4 {
