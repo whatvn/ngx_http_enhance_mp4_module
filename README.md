@@ -1,4 +1,4 @@
-# ngix_http_enchance_mp4_module
+# ngx_http_enchance_mp4_module
 
 - This module is an enhance version of original nginx mp4 module (which shipped into nginx source code). Please note this is my own project, it has nothing related with nginx's source code except it takes all source code of ``ngx_http_mp4_module``.
 
