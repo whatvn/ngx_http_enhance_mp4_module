@@ -32,14 +32,14 @@ Using this module, you *dont have to standarlise* using above tool anymore (you 
 
 - like mp4 module, nginx configuration file will look likes this:
 
-  >location /mp4 {
-  >              error_log logs/mp4_debug.log debug;
-  >              root /data2/streams/ ;
-  >              enchance_mp4;
-  >              fix_mp4 on;
-  >              enchance_mp4_buffer_size 1m;
-  >              enchance_mp4_max_buffer_size 50m;
-  >  }
+  `location /mp4 {
+                error_log logs/mp4_debug.log debug;
+                root /data2/streams/ ;
+                enchance_mp4;
+                fix_mp4 on;
+                enchance_mp4_buffer_size 1m;
+                enchance_mp4_max_buffer_size 50m;
+    }`
 
 - which:
     - ``enchance_mp4``, ``enchance_mp4_buffer_size``, ``enchance_mp4_max_buffer_size`` are the same with ``mp4``, ``mp4_buffer_size``, and ``mp4_max_buffer_size`` directives from the original module.
