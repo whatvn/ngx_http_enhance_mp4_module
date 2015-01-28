@@ -40,15 +40,15 @@ Using this module, you *dont have to standarlise* using above tool anymore (you 
     location /mp4 {
                 error_log logs/mp4_debug.log debug;
                 root /data2/streams/ ;
-                enchance_mp4;
+                enhance_mp4;
                 fix_mp4 on;
-                enchance_mp4_buffer_size 1m;
-                enchance_mp4_max_buffer_size 50m;
+                enhance_mp4_buffer_size 1m;
+                enhance_mp4_max_buffer_size 50m;
     }
 ```
 
 - which:
-    - ``enchance_mp4``, ``enchance_mp4_buffer_size``, ``enchance_mp4_max_buffer_size`` are the same with ``mp4``, ``mp4_buffer_size``, and ``mp4_max_buffer_size`` directives from the original module.
+    - ``enhance_mp4``, ``enhance_mp4_buffer_size``, ``enhance_mp4_max_buffer_size`` are the same with ``mp4``, ``mp4_buffer_size``, and ``mp4_max_buffer_size`` directives from the original module.
     - ``fix_mp4``: when it is on, mp4 file will be fixed if needed, if ``moov`` atom is place in right order, we dont have to fix it. if it is off, this module works exactly the way nginx mp4 module do (so why you use it).
 
 
