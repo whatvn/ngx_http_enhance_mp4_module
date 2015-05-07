@@ -535,8 +535,13 @@ ngx_http_enhance_mp4_handler(ngx_http_request_t *r)
     /* move atom to beginning of file if it's in the last*/
     mlcf = ngx_http_get_module_loc_conf(r, ngx_http_enhance_mp4_module);
     if (mlcf->mp4_enhance == 1) {
-        if (ngx_http_enable_fast_start(&path, of.fd, r) != NGX_OK)
+        ngx_log_debug1(NGX_LOG_DEBUG_HTTP, log, 0,
+                   "examine mp4 filename: \"%V\"", &path);
+        
+        if (ngx_http_enable_fast_start(&path, of.fd, r) != NGX_OK) {
             return NGX_HTTP_INTERNAL_SERVER_ERROR;
+        }
+        
     }
     
     r->root_tested = !r->error_page;
@@ -1857,7 +1862,8 @@ ngx_http_enhance_mp4_read_smhd_atom(ngx_http_enhance_mp4_file_t *mp4, uint64_t a
     atom->pos = atom_header;
     atom->last = atom_header + atom_size;
 
-    trak->vmhd_size += atom_size;
+//    trak->vmhd_size += atom_size;
+    trak->smhd_size += atom_size;
     trak->out[NGX_HTTP_MP4_SMHD_ATOM].buf = atom;
 
     ngx_enhance_atom_next(mp4, atom_data_size);
