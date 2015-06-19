@@ -364,7 +364,6 @@ ngx_open_file_cached_fd, ngx_http_request_t *r) {
         //        printf("last offset: %"PRIu64"  \n", last_offset);
         if (i == 0) {
             ngx_log_debug(NGX_LOG_DEBUG, log, 0, " writing moov atom...\n");
-            i = 1;
         }
         
         if (write(outfile_fd, moov_atom, moov_atom_size) < 0) {
@@ -379,9 +378,11 @@ ngx_open_file_cached_fd, ngx_http_request_t *r) {
             perror((const char *) path->data);
             goto error_out;
         }
-        
-        last_offset -= moov_atom_size;
-
+        /*this do the trick*/
+        if (i == 1) {
+            last_offset -= moov_atom_size;
+        }
+        i = 1;
         if (write(outfile_fd, temp_buf, moov_atom_size) < 0) {
             perror((const char *) path->data);
             goto error_out;
